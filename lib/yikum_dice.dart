@@ -34,9 +34,17 @@ class YahtzeeHomeState extends State<YahtzeeHome>
   int sum = 0; 
 
   @override
+  void initState() { 
+    super.initState(); 
+    for (int i = 1; i <= 6; i++) {
+      fist.add(Dice(i));
+    }
+  }  
+  
+  @override
   Widget build( BuildContext context )
   { 
-    for ( int i=1; i<=6; i++ ) { fist.add(Dice(i)); }
+
     return Scaffold
     ( appBar: AppBar(title: const Text("yahtzee")),
       body: Row
@@ -49,9 +57,8 @@ class YahtzeeHomeState extends State<YahtzeeHome>
             FloatingActionButton(
             onPressed: () {
               // call the sum method
-              setState(() {
-                sum = calculateSum();
-              });
+              sum = calculateSum();
+              print(sum);  // for testing
             },
             child: Text("sum"),
             ),
@@ -60,10 +67,15 @@ class YahtzeeHomeState extends State<YahtzeeHome>
         ),
 
           Container(width: 10),
-          FloatingActionButton
-          ( onPressed: ()
-            { for ( Dice d in fist )
-              { d.roll(); }
+
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                for (Dice d in fist) {
+                  d.roll();
+                }
+
+              });
             },
             child: Text("roll all"),
           ),
@@ -74,12 +86,14 @@ class YahtzeeHomeState extends State<YahtzeeHome>
     );
   }
   
-  int calculateSum() {
 
-    int sum = 0;
-    for (Dice d in fist){
-      sum += d.face;
-    }
+  int calculateSum() {
+    setState(() {
+      sum = 0;
+      for (Dice d in fist) {
+        sum += d.ds?.face ?? 0;
+      }
+    });
     return sum;
   }
 }
