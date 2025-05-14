@@ -302,22 +302,7 @@ class Client2 extends StatelessWidget
     ( (Uint8List data) async{
 
        final message = String.fromCharCodes(data);
-
-      //  if (message.startsWith("BOARD|")){
-      //   // extract data from message and restructure using Tiles
-      //   String  data = message.substring(6); 
-      //   List<List<Tile>> board = List.generate(15, (i) => List<Tile>.generate(15, (j) => Tile("", borderColor: Colors.black,)));
-
-      //   List<String> tiles = data.split(",");
-      //   for (int i = 0; i < 15; i++){
-      //     List<String> row = tiles[i].split(",");
-      //     for (int j = 0; j < 15; j++){
-      //       if (row[j] != "" && row[j].trim().isNotEmpty){
-      //         board[i][j] = Tile(row[j], color: Colors.blue[50], borderColor: Colors.black,);
-      //       }
-      //     }
-      //   }
-      // }     
+  
       if (message.startsWith("BOARD|")) {
         String data = message.substring(6);
         List<String> parts = data.split(',');

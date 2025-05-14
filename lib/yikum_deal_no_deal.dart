@@ -729,24 +729,3 @@ class Home extends StatelessWidget{
 
 
 
-// Row(
-//   children: List.generate(7, (index) {
-//     var random = Random();
-//     int randomNum = random.nextInt(26);
-//     String letter = letters[randomNum];
-//     Tile letterTile = Tile(letter);
-//     letterTile.color = Colors.blue[50];
-
-//     return GestureDetector(
-//       onTap: () {
-//         selectedLetter = letter;
-//         // You may need to call setState(() {}) if this is in a stateful widget
-//       },
-//       child: Container(
-//         padding: EdgeInsets.all(8),
-//         color: letterTile.color,
-//         child: Text(letter),
-//       ),
-//     );
-//   }),
-// ),
